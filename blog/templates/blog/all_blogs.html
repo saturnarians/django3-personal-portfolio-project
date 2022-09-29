@@ -1,0 +1,38 @@
+{% extends 'portfolio/base.html'%}
+
+{% block content %}
+
+<H1>My Precious</H1>
+<h2>Jay has written {{ blogs.count }} Blog{{ blogs.count|pluralize }} </h2>
+
+{% for blog in blogs %} 
+
+<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }} </h2> </a>
+
+<H5>{{ blog.date|date:'M  D Y' }}</H5>
+
+<!-- #This uppercases everything
+<H5>{{ blog.date|date:'M  D Y'|upper }}</H5>
+-->
+
+
+<!--Truncatechars,limits the number of character used -->
+<p>{{ blog.description|striptags|truncatechars:100 }}</p>
+
+<!--
+Truncatechars,limits the number of character used and make HTML tags invisible
+<p>{{ blog.description|safe|truncatechars:100 }}</p>
+-->
+
+<!--{% if blog.url %}--> 
+
+<!--{% endif %}-->
+
+
+<!--This is a comment. Comments are not displayed in the browser-->
+
+{% endfor %}
+
+
+{% endblock %}
+
