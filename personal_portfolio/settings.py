@@ -125,6 +125,12 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
+try: 
+    from personal_portfolio.local_settings import *
+    
+except ImportError:
+    print("Oops! no local file. You must be on LIVE ")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
